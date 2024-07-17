@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- ****** Archive Area Start ****** -->
+    <section class="archive-area section_padding_80">
+        <div class="container">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-12 col-md-7 item" style="height: 544px;">
+                    <a href="{% url 'blog_create' %}" class="btn btn-success">Create Blog</a>
+                    <br> <br>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">title</th>
+                            <th scope="col">update</th>
+                            <th scope="col">delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for blog in blogs %}
+                          <tr>
+                            <th scope="row">{{blog.id}}</th>
+                            <td>{{blog.title}}</td>
+                            <td><a href="{% url 'blog_update' blog.id %}">update</a></td>
+                            <td><a href="{% url 'blog_delete' blog.id %}">delete</a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+                <!-- <div class="col-12">
+                    <div class="pagination-area d-sm-flex mt-15">
+                        <nav aria-label="#">
+                            <ul class="pagination">
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </section>
+    <!-- ****** Archive Area End ****** -->
+{% endblock %}
